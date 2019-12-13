@@ -5,4 +5,8 @@ class Node
     @surname = surname
     @next_node = nil
   end
+
+  def add_node(surname)
+    @next_node = Node.new(surname)
+  end
 end
