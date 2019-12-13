@@ -9,4 +9,8 @@ class Node
   def add_node(surname)
     @next_node = Node.new(surname)
   end
+
+  def set_next_node(node)
+    @next_node = node
+  end
 end
