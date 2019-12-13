@@ -50,7 +50,7 @@ class LinkedList
     else
       string = "The #{head_node.surname} family"
       node = head_node.next_node
-      until !node || count == 0
+      until !node || count == 1
         string += ", followed by the #{node.surname} family"
         node = node.next_node
         count -= 1 if count
