@@ -27,6 +27,18 @@ class LinkedList
       head.set_next_node(previous_head)
     end
   end
+  
+  def insert(position, surname, node = head)
+    new_node = Node.new(surname)
+    (position - 1).times do
+      unless !node.next_node
+        node = node.next_node
+      end
+    end
+    continuing_node = node.next_node
+    inserted_node = node.set_next_node(new_node)
+    inserted_node.set_next_node(continuing_node)
+  end
 
   def count(node = head)
     if node == nil
