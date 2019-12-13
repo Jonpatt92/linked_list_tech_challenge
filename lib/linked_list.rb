@@ -30,7 +30,7 @@ class LinkedList
 
   def insert(position, surname, node = head)
     new_node        = Node.new(surname)
-    positional_node = find_position(position)
+    positional_node = find_position(position - 1)
     continuing_node = positional_node.next_node
     inserted_node   = positional_node.set_next_node(new_node)
     inserted_node.set_next_node(continuing_node)
@@ -60,12 +60,12 @@ class LinkedList
   end
 
   def find(position, elements)
-    positional_node = find_position(position + 1)
+    positional_node = find_position(position)
     to_string(positional_node, elements)
   end
 
   def find_position(position, node = head)
-    (position - 1).times do
+    position.times do
       unless !node.next_node
         node = node.next_node
       end
