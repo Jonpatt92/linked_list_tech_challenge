@@ -17,4 +17,11 @@ class NodeTest < Minitest::Test
     assert_equal "Burke", @node.surname
   end
 
+  def test_add_node
+    assert_nil @node.next_node
+    
+    @node.add_node("Handy")
+
+    assert_equal "Handy", @node.next_node.surname
+  end
 end
