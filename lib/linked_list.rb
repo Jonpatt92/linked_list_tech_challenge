@@ -1,5 +1,6 @@
 require './lib/node.rb'
 require 'pry'
+
 class LinkedList
   attr_reader :head
 
@@ -16,14 +17,23 @@ class LinkedList
     end
   end
 
-  def count
-    node_count = 0
-    node = head
-    until !node
-      node = node.next_node
-      node_count +=1
+  def prepend(surname)
+    new_node = Node.new(surname)
+    if !head
+      @head         = new_node
+    else
+      previous_head = head
+      @head         = new_node
+      head.set_next_node(previous_head)
     end
-    node_count
+  end
+
+  def count(node = head)
+    if node == nil
+      0
+    else
+      1 + count(node.next_node)
+    end
   end
 
   def to_string
@@ -40,11 +50,28 @@ class LinkedList
     end
   end
 
-  def find_tail
-    node = head
+  def find_tail(node = head)
     until !node.next_node
       node = node.next_node
     end
     node
   end
 end
+
+## Recursive Solution ##
+# def append(surname)
+#   new_node = Node.new(surname)
+#   if head == nil
+#     @head = new_node
+#   else
+#     append_recursive(@head, new_node)
+#   end
+# end
+#
+# def append_recursive(current_node, new_node)
+#   if current_node.next_node = nil
+#     current_node.next_node = new_node
+#   else
+#     append_recursive(current_node.next_node, new_node)
+#   end
+# end
