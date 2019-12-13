@@ -67,4 +67,15 @@ class LinkedListTest < Minitest::Test
     expected = "The Rhodes Family, followed by the Hardy family, followed by the Smith family, followed by the Johnson family"
     assert_equal expected, @list.to_string
   end
+
+  def test_it_can_prepend
+    @list.append("Hardy")
+    assert_nil @list.head.next_node
+
+    @list.append("Johnson")
+    @list.prepend("Rhodes")
+    assert_equal "Rhodes", @list.head.surname
+    assert_equal "Hardy", @list.head.next_node.surname
+    assert_equal 3, @list.count
+  end
 end
