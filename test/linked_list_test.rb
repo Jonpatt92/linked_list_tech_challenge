@@ -35,7 +35,7 @@ class LinkedListTest < Minitest::Test
 
     @list.append("West")
 
-    assert_equal "The West Family", @list.to_string
+    assert_equal "The West family", @list.to_string
   end
 
   def test_it_can_append_multiple_linked_nodes
@@ -64,7 +64,7 @@ class LinkedListTest < Minitest::Test
     @list.append("Smith")
     @list.append("Johnson")
 
-    expected = "The Rhodes Family, followed by the Hardy family, followed by the Smith family, followed by the Johnson family"
+    expected = "The Rhodes family, followed by the Hardy family, followed by the Smith family, followed by the Johnson family"
     assert_equal expected, @list.to_string
   end
 
@@ -85,7 +85,7 @@ class LinkedListTest < Minitest::Test
     @list.append("Smith")
 
 
-    expected = "The Rhodes Family, followed by the Inserted family, followed by the Hardy family, followed by the Smith family"
+    expected = "The Rhodes family, followed by the Inserted family, followed by the Hardy family, followed by the Smith family"
 
     @list.insert(1, "Inserted")
 
@@ -97,16 +97,31 @@ class LinkedListTest < Minitest::Test
     @list.append("Hardy")
     @list.append("Smith")
 
-    expected = "The Rhodes Family, followed by the Hardy family, followed by the Inserted family, followed by the Smith family"
+    expected = "The Rhodes family, followed by the Hardy family, followed by the Inserted family, followed by the Smith family"
 
     @list.insert(2, "Inserted")
 
     assert_equal expected, @list.to_string
 
-    expected = "The Rhodes Family, followed by the Hardy family, followed by the Inserted family, followed by the Next family, followed by the Smith family"
+    expected = "The Rhodes family, followed by the Hardy family, followed by the Inserted family, followed by the Next family, followed by the Smith family"
 
     @list.insert(3, "Next")
 
     assert_equal expected, @list.to_string
+  end
+
+  def test_it_can_find_nodes
+    @list.append("McKinney")
+    @list.append("Lawson")
+    @list.append("Brooks")
+    @list.append("Henderson")
+
+    expected = "The McKinney family, followed by the Lawson family, followed by the Brooks family, followed by the Henderson family"
+    expected_1 = "The Brooks family"
+    expected_2 = "The Lawson family, followed by the Brooks family, followed by the Henderson family"
+
+    assert_equal expected,   @list.to_string
+    assert_equal expected_1, @list.find(2, 1)
+    assert_equal expected_2, @list.find(1, 3)
   end
 end
