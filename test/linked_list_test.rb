@@ -78,4 +78,35 @@ class LinkedListTest < Minitest::Test
     assert_equal "Hardy", @list.head.next_node.surname
     assert_equal 3, @list.count
   end
+
+  def test_it_can_insert_one_position_over
+    @list.append("Rhodes")
+    @list.append("Hardy")
+    @list.append("Smith")
+
+
+    expected = "The Rhodes Family, followed by the Inserted family, followed by the Hardy family, followed by the Smith family"
+
+    @list.insert(1, "Inserted")
+
+    assert_equal expected, @list.to_string
+  end
+
+  def test_it_can_insert_multiple_positions_over
+    @list.append("Rhodes")
+    @list.append("Hardy")
+    @list.append("Smith")
+
+    expected = "The Rhodes Family, followed by the Hardy family, followed by the Inserted family, followed by the Smith family"
+
+    @list.insert(2, "Inserted")
+
+    assert_equal expected, @list.to_string
+
+    expected = "The Rhodes Family, followed by the Hardy family, followed by the Inserted family, followed by the Next family, followed by the Smith family"
+
+    @list.insert(3, "Next")
+
+    assert_equal expected, @list.to_string
+  end
 end
